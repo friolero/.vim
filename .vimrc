@@ -128,8 +128,13 @@ filetype plugin indent on    " required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NerdTree {
+    nnoremap <leader>n :NERDTreeFocus<CR>
+    "nnoremap <C-n> :NERDTree<CR>
+    "nnoremap <C-t> :NERDTreeToggle<CR>
+    "nnoremap <C-f> :NERDTreeFind<CR>
     autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+    " do not auto open nerdtree
+    "autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " }
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -211,14 +216,16 @@ filetype plugin indent on    " required
 " ALE {
     let g:ale_enabled = 1
     let g:ale_lint_on_enter = 1
-    let g:ale_sign_column_always = 0
-    let g:ale_sign_offset = 1000000
-    "let g:ale_sign_error = '>>'
-    let g:ale_sign_error = '💣'
-    "let g:ale_sign_warning = '--'
-    let g:ale_sign_warning = '🚩'
-    let g:ale_statusline_format = ['💣 %d', '🚩 %d', '']
-    let g:ale_python_black_options = '--line-length=80'
+    let g:ale_lint_on_text_changed=1
+    let g:ale_sign_error = '>>'
+    "let g:ale_sign_error = '💣'
+    let g:ale_sign_warning = '--'
+    "let g:ale_sign_warning = '🚩'
+    "let g:ale_statusline_format = ['💣 %d', '🚩 %d', '']
+    let g:ale_python_flake8_options = '--max-line-length 80'
+    let g:ale_python_pycodestyle_options = '--max-line-length 80'
+    let g:ale_python_black_options = '--line-length 80'
+    "let g:ale_python_isort_options = '--profile black -l 80'
     let g:ale_linters = {
       \   'python': ['pylint', 'flake8', 'pycodestyle'],
       \   'ruby': ['standardrb', 'rubocop'],
@@ -227,7 +234,6 @@ filetype plugin indent on    " required
     let g:ale_fixers = {
       \    'python': ['autoimport', 'isort', 'autopep8', 'black'],
       \}
-    "let g:ale_python_isort_options = '--profile black -l 80'
     "nmap <F10> :ALEFix<CR>
-    let g:ale_fix_on_save = 0
+    let g:ale_fix_on_save = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
