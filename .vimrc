@@ -100,6 +100,11 @@ set textwidth=80
 " Hide mouse when typing.
 set mousehide
 
+"set foldmethod=indent   "fold based on indent
+"set foldnestmax=10      "deepest fold is 10 levels
+"set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+
 " Set colorscheme.
 colorscheme molokai
 
