@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "
 "                
 "                  ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
@@ -220,24 +220,42 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE {
     let g:ale_enabled = 1
-    let g:ale_lint_on_enter = 1
-    let g:ale_lint_on_text_changed=1
+    let g:ale_set_balloons = 1
+    let g:ale_floating_preview = 1
+    let g:ale_cursor_detail = 1
     let g:ale_sign_error = '>>'
-    "let g:ale_sign_error = '💣'
     let g:ale_sign_warning = '--'
+    "let g:ale_completion_enabled = 0
+    "let g:ale_sign_error = '💣'
     "let g:ale_sign_warning = '🚩'
     "let g:ale_statusline_format = ['💣 %d', '🚩 %d', '']
+    "
+    let g:ale_lint_on_enter = 1
+    let g:ale_lint_on_text_changed = 1
     let g:ale_python_flake8_options = '--max-line-length 80'
     let g:ale_python_pycodestyle_options = '--max-line-length 80'
-    let g:ale_python_black_options = '--line-length 80'
-    "let g:ale_python_isort_options = '--profile black -l 80'
+    "let g:ale_cpp_clangtidy_executable = '/usr/local/bin/clang-tidy'
+    let g:ale_c_clangtidy_extra_options = ''
+    let g:ale_c_clangtidy_options = ''
+    let g:ale_cpp_clangtidy_extra_options = ''
+    let g:ale_cpp_clangtidy_options = ''
     let g:ale_linters = {
       \   'python': ['pylint', 'flake8', 'pycodestyle'],
+      \   'c': ['clangtidy'],
+      \   'cpp': ['clangtidy'],
       \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint'],
       \}
+
+    "let g:ale_python_isort_options = '--profile black -l 80'
+    let g:ale_python_black_options = '--line-length 80'
+    let g:clang_format#detect_style_file = 1
+    "let g:clang_format#auto_format = 1
+    "let g:ale_cpp_clangformat_executable = '/usr/local/bin/clang-format'
     let g:ale_fixers = {
       \    'python': ['autoimport', 'isort', 'autopep8', 'black'],
+      \    'c': ['clang-format'],
+      \    'cpp': ['clang-format'],
       \}
     "nmap <F10> :ALEFix<CR>
     let g:ale_fix_on_save = 1
