@@ -15,6 +15,8 @@
 " Disable compatibilty with Vi.
 set nocompatible
 
+set encoding=utf-8
+
 " Allow plugins to be used.
 filetype plugin indent on
 filetype off
@@ -23,7 +25,7 @@ filetype off
 syntax on
 
 " Show line numbers.
-set number
+set nonumber
 
 " Highlight line with cursor.
 set cursorline
@@ -228,6 +230,7 @@ filetype plugin indent on    " required
     let g:ale_cursor_detail = 1
     let g:ale_sign_error = '>>'
     let g:ale_sign_warning = '--'
+    let g:alesign_offset = 1000000
     "let g:ale_completion_enabled = 0
     "let g:ale_sign_error = '💣'
     "let g:ale_sign_warning = '🚩'
@@ -237,13 +240,13 @@ filetype plugin indent on    " required
     let g:ale_lint_on_text_changed = 1
     let g:ale_python_flake8_options = '--max-line-length 80'
     let g:ale_python_pycodestyle_options = '--max-line-length 80'
-    "let g:ale_cpp_clangtidy_executable = '/usr/local/bin/clang-tidy'
+    let g:ale_cpp_clangtidy_executable = 'clang-tidy'
     let g:ale_c_clangtidy_extra_options = ''
     let g:ale_c_clangtidy_options = ''
     let g:ale_cpp_clangtidy_extra_options = ''
     let g:ale_cpp_clangtidy_options = ''
     let g:ale_linters = {
-      \   'python': ['pylint', 'flake8', 'pycodestyle'],
+      \   'python': ['pylint', 'flake8', 'pycodestyle', 'pydocstyle'],
       \   'c': ['clangtidy'],
       \   'cpp': ['clangtidy'],
       \   'ruby': ['standardrb', 'rubocop'],
@@ -254,7 +257,7 @@ filetype plugin indent on    " required
     let g:ale_python_black_options = '--line-length 80'
     let g:clang_format#detect_style_file = 1
     "let g:clang_format#auto_format = 1
-    "let g:ale_cpp_clangformat_executable = '/usr/local/bin/clang-format'
+    let g:ale_cpp_clangformat_executable = 'clang-format'
     let g:ale_fixers = {
       \    'python': ['autoimport', 'isort', 'autopep8', 'black'],
       \    'c': ['clang-format'],
