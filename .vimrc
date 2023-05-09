@@ -30,9 +30,6 @@ set nonumber
 " Highlight line with cursor.
 set cursorline
 
-" Highlight column with cursor.
-set cursorcolumn
-
 " Split window to open a pane in the bottom.
 set splitbelow
 
