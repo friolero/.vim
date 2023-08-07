@@ -228,6 +228,9 @@ filetype plugin indent on    " required
     let g:ale_sign_error = '>>'
     let g:ale_sign_warning = '--'
     let g:alesign_offset = 1000000
+    let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
+
+
     "let g:ale_completion_enabled = 0
     "let g:ale_sign_error = '💣'
     "let g:ale_sign_warning = '🚩'
